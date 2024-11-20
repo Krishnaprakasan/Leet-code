@@ -1,0 +1,44 @@
+int isAlpha(char* s) {
+    int value = (int)*s;
+    
+    if((value >= 48 && value <= 57) || 
+    (value >= 65 && value <= 90)) {
+        return 1;
+    }
+
+    if(value >= 97 && value <= 122) {
+        *s -= 32;
+        return 1;
+    }
+    return 0;
+}
+
+
+bool isPalindrome(char* s) {
+    char* start = s;
+    char* end = s;
+
+    while(*end != '\0') {
+        end++;
+    } 
+
+    while(start < end) {
+        if(!isAlpha(start)) {
+            start++;
+            continue;
+        }
+        if(!isAlpha(end)) {
+            end--;
+            continue;
+        }
+
+        if(*start != *end) {
+            return 0;
+        }
+
+        start++;
+        end--;
+        
+    }
+    return 1;
+}
